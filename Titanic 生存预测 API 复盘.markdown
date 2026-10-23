@@ -6,15 +6,20 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import joblib	引包：Pandas 处理表格，sklearn 提供机器学习算法，joblib 负责把模型存成文件。
+
 df = pd.read_csv('train.csv')	读数据：读取 CSV 到 DataFrame 中。
+
 df['Age'] = df['Age'].fillna(df['Age'].median())
 df['Embarked'] = df['Embarked'].fillna(df['Embarked'].mode()[0])	数据清洗：中位数填年龄，众数填登船港口。保证模型训练时不会因为 NaN 崩溃。
-features = ['Pclass', 'Sex', 'Age', 'Fare']
-X = df[features]
-y = df['Survived']	特征工程：挑出 4 个关键特征作为输入（X），把生存状态作为输出标签（y）。
+
+features = ['Pclass', 'Sex', 'Age', 'Fare'] X = df[features] y = df['Survived']	
+特征工程：挑出 4 个关键特征作为输入（X），把生存状态作为输出标签（y）。
+
 X['Sex'] = X['Sex'].map({'male': 0, 'female': 1})	编码：机器不认识字母，把性别转成 0 和 1。（关键点：线上预测时必须保持一致）
+
 model = LogisticRegression(max_iter=1000)
 model.fit(X, y)	训练模型：实例化逻辑回归算法，用历史数据让它学会“什么样的乘客能活下来”。
+
 joblib.dump(model, 'titanic_model.pkl')	保存模型：把训练好的“大脑”打包成 pkl 二进制文件，供 API 调用。
 
 
