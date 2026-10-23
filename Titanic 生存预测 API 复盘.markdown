@@ -60,7 +60,8 @@ git merge master	把 master 分支上的修改合并到当前的 main 分支上�
 git push -u origin main	-u 表示建立追踪关系，以后直接敲 git push 就默认推到 origin/main。
 git push origin --delete master	删除 GitHub 远程仓库上的 master 分支。
 git branch -D master	-D 表示强制删除本地电脑上的 master 分支。
-💡 面试防坑指南（结合本项目）
+
+## 💡 面试防坑指南（结合本项目）
 如果面试官问你：“你在这个项目里遇到过什么难点？”
 你可以这样回答（直接拿高分）：
 
