@@ -1,0 +1,15 @@
+# 模型文件（体积大，且每次训练结果不同，不入库）
+*.pkl
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# 日志和虚拟环境
+*.log
+.venv/
+myenv/
+
+# 数据文件
+train.csv
+train_cleaned.csv
