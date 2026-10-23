@@ -40,6 +40,7 @@ return {"survived": int(...)}	返回结果：包装成前端能看懂的 JSON �
 这部分的命令是你从“学生”走向“工程师”的关键。
 
 Linux 命令	意义与功能
+cd ..  返回上级目录
 mkdir -p ~/titanic_api  cd ~/titanic_api	 建目录：给 API 服务建一个独立的工作空间，并切换进去。
 
 cp /mnt/d/titanic-survival-api/main.py .	跨系统拷贝：/mnt/d/ 是 WSL 自动挂载的 Windows D 盘。后面的 . 代表复制到当前目录。
