@@ -16,7 +16,9 @@ X['Sex'] = X['Sex'].map({'male': 0, 'female': 1})	编码：机器不认识字母
 model = LogisticRegression(max_iter=1000)
 model.fit(X, y)	训练模型：实例化逻辑回归算法，用历史数据让它学会“什么样的乘客能活下来”。
 joblib.dump(model, 'titanic_model.pkl')	保存模型：把训练好的“大脑”打包成 pkl 二进制文件，供 API 调用。
-模块二：Web API 开发 (main.py)
+
+
+## 模块二：Web API 开发 (main.py)
 这个脚本的任务是：建一个网站，接收 JSON 数据，调用刚才存好的“大脑”，返回预测结果。
 
 代码片段	意义与功能
