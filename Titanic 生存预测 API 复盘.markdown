@@ -28,16 +28,23 @@ joblib.dump(model, 'titanic_model.pkl')	保存模型：把训练好的“大脑�
 
 代码片段	意义与功能
 app = FastAPI(title="...")	建站：实例化一个 FastAPI 应用。
+
 model = joblib.load('titanic_model.pkl')	加载模型：在服务启动时，把“大脑”从硬盘读到内存中（只执行一次，提高性能）。
+
 class Passenger(BaseModel):
 Pclass: int
 Sex: str
 ...	数据校验 (Pydantic)：定义“安检规则”。如果前端传进来的不是数字或格式不对，FastAPI 会自动拦截并报错，保护后端的模型。
+
 @app.post("/predict")	定义路由：告诉系统，当有人用 POST 方法访问 /predict 路径时，执行下面的函数。
+
 df = pd.DataFrame([data])	格式转换：把前端传来的单个字典（JSON），包上中括号，转成 Pandas 的一行 DataFrame。(踩坑点：不加 [] 会报错)
+
 df['Sex'] = df['Sex'].map(...)	同步编码：把前端传来的 male/female，转成和训练时一模一样的 0/1。
+
 prediction = model.predict(df)[0]
-prob = model.predict_proba(df)[0][1]	预测：[0] 剥离外层列表拿结果；[0][1] 拿第二个元素（即生还的概率）。
+prob = model.predict_proba(df)[0][1]	预测：[0] 剥离外层列表拿结果；[0][1] 拿第二个元素（即生还的概率）
+。
 return {"survived": int(...)}	返回结果：包装成前端能看懂的 JSON 字典。用 int() 和 float() 转换是因为 FastAPI 不认 numpy 的数据类型。
 
 
