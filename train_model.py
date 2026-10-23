@@ -28,4 +28,4 @@ print("模型训练完成！")
 # 5. 保存模型到本地
 # 使用 joblib.dump() 保存模型为 'titanic_model.pkl'
 joblib.dump(model, 'titanic_model.pkl')
-##
+###
