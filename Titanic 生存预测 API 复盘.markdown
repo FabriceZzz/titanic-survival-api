@@ -52,6 +52,10 @@ pip install fastapi uvicorn joblib pandas scikit-learn	装依赖：把跑通 API
 uvicorn main:app --host 0.0.0.0 --port 8000	前台启动测试：main:app 指文件和应用实例；0.0.0.0 允许外部访问（如你的 Windows 浏览器）；8000 是端口。
 
 nohup uvicorn main:app --host 0.0.0.0 --port 8000 > api.log 2>&1 &	后台常驻：nohup 让你关掉终端服务也不死；> api.log 2>&1 把输出和报错全写进日志；& 放到后台跑。
+nohup：让程序无视终端关闭。
+uvicorn ...：启动命令。
+> api.log 2>&1：把终端里本来要打印的日志（包括报错），全部重定向保存到当前目录的 api.log 文件里。
+&：最后加个 &，代表放到后台执行。
 
 ps aux | grep uvicorn	查进程：查看 uvicorn 服务是否在后台运行，记下它的 PID（进程号）。
 
