@@ -51,3 +51,4 @@ def predict_survival(passenger: Passenger):
         "probability": round(float(prob), 2),
         "message": "生还" if prediction == 1 else "遇难"
     }
+##
