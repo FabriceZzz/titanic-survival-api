@@ -1,5 +1,5 @@
-📦 项目 2：Titanic 生存预测 API 完整复习指南
-模块一：模型训练 (train_model.py)
+# 📦 项目 2：Titanic 生存预测 API 完整复习指南
+## 模块一：模型训练 (train_model.py)
 这个脚本的任务是：把数据喂给算法，训练出一个“大脑”，并把它存到硬盘上。
 
 代码片段	意义与功能
@@ -34,7 +34,9 @@ df['Sex'] = df['Sex'].map(...)	同步编码：把前端传来的 male/female，�
 prediction = model.predict(df)[0]
 prob = model.predict_proba(df)[0][1]	预测：[0] 剥离外层列表拿结果；[0][1] 拿第二个元素（即生还的概率）。
 return {"survived": int(...)}	返回结果：包装成前端能看懂的 JSON 字典。用 int() 和 float() 转换是因为 FastAPI 不认 numpy 的数据类型。
-模块三：Linux 部署与后台运行（运维核心）
+
+
+## 模块三：Linux 部署与后台运行（运维核心）
 这部分的命令是你从“学生”走向“工程师”的关键。
 
 Linux 命令	意义与功能
