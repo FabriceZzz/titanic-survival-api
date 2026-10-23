@@ -40,18 +40,27 @@ return {"survived": int(...)}	返回结果：包装成前端能看懂的 JSON �
 这部分的命令是你从“学生”走向“工程师”的关键。
 
 Linux 命令	意义与功能
-mkdir -p ~/titanic_api
-cd ~/titanic_api	建目录：给 API 服务建一个独立的工作空间，并切换进去。
+mkdir -p ~/titanic_api  cd ~/titanic_api	 建目录：给 API 服务建一个独立的工作空间，并切换进去。
+
 cp /mnt/d/titanic-survival-api/main.py .	跨系统拷贝：/mnt/d/ 是 WSL 自动挂载的 Windows D 盘。后面的 . 代表复制到当前目录。
+
 source ~/myenv/bin/activate	激活环境：进入虚拟环境，确保我们使用的依赖是隔离的。
+
 pip install fastapi uvicorn joblib pandas scikit-learn	装依赖：把跑通 API 需要的包全部安装到 Linux 的虚拟环境中。
+
 uvicorn main:app --host 0.0.0.0 --port 8000	前台启动测试：main:app 指文件和应用实例；0.0.0.0 允许外部访问（如你的 Windows 浏览器）；8000 是端口。
+
 nohup uvicorn main:app --host 0.0.0.0 --port 8000 > api.log 2>&1 &	后台常驻：nohup 让你关掉终端服务也不死；> api.log 2>&1 把输出和报错全写进日志；& 放到后台跑。
+
 ps aux | grep uvicorn	查进程：查看 uvicorn 服务是否在后台运行，记下它的 PID（进程号）。
+
 kill -9 <PID>	杀进程：如果代码更新需要重启，用它强行关掉旧服务。
+
 tail -f api.log	实时监控：动态查看日志。按 Ctrl+C 退出监控，但服务不停止。
+
 ss -tulpn | grep 8000	查端口：验证 8000 端口是否被 uvicorn 成功监听。
-模块四：Git 分支管理与提交（工程规范）
+
+## 模块四：Git 分支管理与提交（工程规范）
 最后，你把项目传到了 GitHub，并且清理了错误的 master 分支。
 
 Git 命令	意义与功能
